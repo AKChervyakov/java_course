@@ -1,20 +1,40 @@
 package ru.stqa.pft.sandbox;
 
 /**
- * Created by Sanchez on 22.01.2017.
+ * Created by Sanchez on 23.01.2017.
  */
-public class Point {
+class Point {
 
-  public static void main (String[] args) {
+  public double x; // абсцисса точки
+  public double y; // ордината точки
 
-    double x1 = 3; //абцисса точки p1
-    double y1 = 6; //ордината точки p1
-    double x2 = 4; //абцисса точки p2
-    double y2 = 6; //ордината точки p2
-    System.out.println("Расстояние между точками (x1, y1) и (x2, y2) = " + distance(x1, y1, x2, y2));
+  // возвращаем строку с описанием точки
+  public String toString() {
+    return "(" + x + ";" + y + ")";
   }
 
-  public static double distance(double x1, double y1, double x2, double y2) {
-    return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+  // выводим на экран описание точки
+  public void printPoint() {
+    System.out.print(this.toString());
+  }
+
+  // Создаем точку с указанными координатами
+  public Point(double a, double b) {
+    x = a;
+    y = b;
+  }
+
+  // Вычисляем расстояние между точками
+  public double distance(Point p) {
+    return Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2));
+  }
+
+  // Проверяем совпадают ли точки
+  public boolean equalsPoint(Point p) {
+    if (this.x == p.x && this.y == p.y) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
