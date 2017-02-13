@@ -33,7 +33,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     type(By.name("homepage"), contactData.getHomepage());
-    click(By.name("theform"));
+//    click(By.name("theform"));
     if (!wd.findElement(By.xpath(contactData.getBirthday_day())).isSelected()) {
       wd.findElement(By.xpath(contactData.getBirthday_day_ent())).click();
     }
@@ -48,7 +48,7 @@ public class ContactHelper extends HelperBase {
       wd.findElement(By.xpath(contactData.getAnniversary_mon_ent())).click();
     }
     type(By.name("ayear"), contactData.getAnniversary_year());
-    wd.findElement(By.name("theform")).click();
+//    wd.findElement(By.name("theform")).click();
     if (!wd.findElement(By.xpath(contactData.getGroup())).isSelected()) {
       wd.findElement(By.xpath(contactData.getGroup_ent())).click();
     }
@@ -59,5 +59,22 @@ public class ContactHelper extends HelperBase {
 
   public void initContactCreation() {
     click(By.linkText("add new"));
+  }
+
+  public void selectContact() {
+    click(By.id("15"));
+  }
+
+  public void deledeContact() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    wd.switchTo().alert().accept();
+  }
+
+  public void selectModifiedContact() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+  }
+
+  public void submitContactModification() {
+    click(By.name("update"));
   }
 }
