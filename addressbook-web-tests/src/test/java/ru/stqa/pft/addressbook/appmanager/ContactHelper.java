@@ -48,13 +48,6 @@ public class ContactHelper extends HelperBase {
       wd.findElement(By.xpath(contactData.getAnniversary_mon_ent())).click();
     }
     type(By.name("ayear"), contactData.getAnniversary_year());
-//    wd.findElement(By.name("theform")).click();
-    if (!wd.findElement(By.xpath(contactData.getGroup())).isSelected()) {
-      wd.findElement(By.xpath(contactData.getGroup_ent())).click();
-    }
-    type(By.name("address2"), contactData.getSec_Address());
-    type(By.name("phone2"), contactData.getSec_Phone());
-    type(By.name("notes"), contactData.getNotes());
   }
 
   public void initContactCreation() {

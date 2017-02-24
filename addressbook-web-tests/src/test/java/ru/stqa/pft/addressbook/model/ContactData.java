@@ -26,13 +26,8 @@ public class ContactData {
   private final String anniversary_mon;
   private final String anniversary_mon_ent;
   private final String anniversary_year;
-  private final String group;
-  private final String group_ent;
-  private final String sec_Address;
-  private final String sec_Phone;
-  private final String notes;
 
-  public ContactData(String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year, String Group, String Group_ent, String Sec_Address, String Sec_Phone, String Notes) {
+  public ContactData(String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year) {
     first_name = First_name;
     middle_name = Middle_name;
     last_name = Last_name;
@@ -58,11 +53,6 @@ public class ContactData {
     anniversary_mon = Anniversary_mon;
     anniversary_mon_ent = Anniversary_mon_ent;
     anniversary_year = Anniversary_year;
-    group = Group;
-    group_ent = Group_ent;
-    sec_Address = Sec_Address;
-    sec_Phone = Sec_Phone;
-    notes = Notes;
   }
 
   public String getFirst_name() {
@@ -165,23 +155,4 @@ public class ContactData {
     return anniversary_year;
   }
 
-  public String getGroup() {
-    return group;
-  }
-
-  public String getGroup_ent() {
-    return group_ent;
-  }
-
-  public String getSec_Address() {
-    return sec_Address;
-  }
-
-  public String getSec_Phone() {
-    return sec_Phone;
-  }
-
-  public String getNotes() {
-    return notes;
-  }
 }
