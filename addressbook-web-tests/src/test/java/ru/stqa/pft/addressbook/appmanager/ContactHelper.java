@@ -34,7 +34,6 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     type(By.name("homepage"), contactData.getHomepage());
-//    click(By.name("theform"));
     if (!wd.findElement(By.xpath(contactData.getBirthday_day())).isSelected()) {
       wd.findElement(By.xpath(contactData.getBirthday_day_ent())).click();
     }
@@ -56,7 +55,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact() {
-    click(By.id("15"));
+    click(By.name("selected[]"));
   }
 
   public void deledeContact() {
