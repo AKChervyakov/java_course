@@ -71,10 +71,25 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectModifiedContact() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
   public void submitContactModification() {
     click(By.name("update"));
+  }
+
+  private void returnToHomePage() {
+    wd.findElement(By.linkText("home")).click();
+  }
+
+  public void createContact(ContactData contact, boolean creation) {
+    initContactCreation();
+    fillContactForm(contact, true);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
