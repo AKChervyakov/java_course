@@ -26,8 +26,9 @@ public class ContactData {
   private final String anniversary_mon;
   private final String anniversary_mon_ent;
   private final String anniversary_year;
+  private String group;
 
-  public ContactData(String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year) {
+  public ContactData(String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year, String group) {
     first_name = First_name;
     middle_name = Middle_name;
     last_name = Last_name;
@@ -53,6 +54,7 @@ public class ContactData {
     anniversary_mon = Anniversary_mon;
     anniversary_mon_ent = Anniversary_mon_ent;
     anniversary_year = Anniversary_year;
+    this.group = group;
   }
 
   public String getFirst_name() {
@@ -155,4 +157,7 @@ public class ContactData {
     return anniversary_year;
   }
 
+  public String getGroup() {
+    return group;
+  }
 }
