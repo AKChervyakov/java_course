@@ -71,8 +71,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectModifiedContact(int index) {
-    wd.findElements(By.xpath("//tr[@name='entry']")).get(index).
-    findElement(By.xpath(".//a[contains(@href,'edit')]")).click();
+    wd.findElements(By.xpath("//tr[@name='entry']")).get(index).findElement(By.xpath(".//a[contains(@href,'edit')]")).click();
   }
 
   public void submitContactModification() {
