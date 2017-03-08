@@ -24,5 +24,8 @@ public class GroupDeletionsTests extends TestBase{
         } else {
             Assert.assertEquals(after.size(), before.size());
         }
+
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
     }
 }
