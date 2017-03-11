@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,17 +105,11 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
-      String First_name = element.getText();
-      String Last_name = element.getText();
-      String Address = element.getText();
-      String Telephone_Home = element.getText();
-      String Telephone_Mobile = element.getText();
-      String Telephone_Work = element.getText();
-      String Email = element.getText();
-      String Email2 = element.getText();
-      String Email3 = element.getText();
+      String First_name = element.findElement(By.xpath(".//td[3]")).getText();
+      String Last_name = element.findElement(By.xpath(".//td[2]")).getText();
+      String Address = element.findElement(By.xpath(".//td[4]")).getText();
       int ID = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(ID, First_name, null, Last_name, null, null, null, Address, Telephone_Home, Telephone_Mobile, Telephone_Work, null, Email, Email2, Email3, null,  null, null, null, null, null, null, null, null, null, null, null);
+      ContactData contact = new ContactData(ID, First_name, null, Last_name, null, null, null, Address, null, null, null, null, null, null, null, null,  null, null, null, null, null, null, null, null, null, null, null);
       contacts.add(contact);
     }
     return contacts;

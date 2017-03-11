@@ -208,12 +208,6 @@ public class ContactData {
             ", first_name='" + first_name + '\'' +
             ", last_name='" + last_name + '\'' +
             ", address='" + address + '\'' +
-            ", telephone_Home='" + telephone_Home + '\'' +
-            ", telephone_Mobile='" + telephone_Mobile + '\'' +
-            ", telephone_Work='" + telephone_Work + '\'' +
-            ", email='" + email + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
             '}';
   }
 
@@ -226,16 +220,7 @@ public class ContactData {
 
     if (first_name != null ? !first_name.equals(that.first_name) : that.first_name != null) return false;
     if (last_name != null ? !last_name.equals(that.last_name) : that.last_name != null) return false;
-    if (address != null ? !address.equals(that.address) : that.address != null) return false;
-    if (telephone_Home != null ? !telephone_Home.equals(that.telephone_Home) : that.telephone_Home != null)
-      return false;
-    if (telephone_Mobile != null ? !telephone_Mobile.equals(that.telephone_Mobile) : that.telephone_Mobile != null)
-      return false;
-    if (telephone_Work != null ? !telephone_Work.equals(that.telephone_Work) : that.telephone_Work != null)
-      return false;
-    if (email != null ? !email.equals(that.email) : that.email != null) return false;
-    if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
-    return email3 != null ? email3.equals(that.email3) : that.email3 == null;
+    return address != null ? address.equals(that.address) : that.address == null;
   }
 
   @Override
@@ -243,12 +228,6 @@ public class ContactData {
     int result = first_name != null ? first_name.hashCode() : 0;
     result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
     result = 31 * result + (address != null ? address.hashCode() : 0);
-    result = 31 * result + (telephone_Home != null ? telephone_Home.hashCode() : 0);
-    result = 31 * result + (telephone_Mobile != null ? telephone_Mobile.hashCode() : 0);
-    result = 31 * result + (telephone_Work != null ? telephone_Work.hashCode() : 0);
-    result = 31 * result + (email != null ? email.hashCode() : 0);
-    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
-    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     return result;
   }
 }
