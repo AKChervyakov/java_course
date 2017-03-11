@@ -107,32 +107,15 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       String First_name = element.getText();
-      String Middle_name = element.getText();
       String Last_name = element.getText();
-      String Nickname = element.getText();
-      String Title = element.getText();
-      String Company = element.getText();
       String Address = element.getText();
       String Telephone_Home = element.getText();
       String Telephone_Mobile = element.getText();
       String Telephone_Work = element.getText();
-      String Fax = element.getText();
       String Email = element.getText();
       String Email2 = element.getText();
       String Email3 = element.getText();
-      String Homepage = element.getText();
-      String Birthday_day = element.getText();
-      String Birthday_day_ent = element.getText();
-      String Birthday_mon = element.getText();
-      String Birthday_mon_ent = element.getText();
-      String Birthday_year = element.getText();
-      String Anniversary_day = element.getText();
-      String Anniversary_day_ent = element.getText();
-      String Anniversary_mon = element.getText();
-      String Anniversary_mon_ent = element.getText();
-      String Anniversary_year = element.getText();
-      String group = element.getText();
-      ContactData contact = new ContactData(First_name, Middle_name, Last_name, Nickname, Title, Company, Address, Telephone_Home, Telephone_Mobile, Telephone_Work, Fax, Email, Email2, Email3, Homepage,  Birthday_day, Birthday_day_ent, Birthday_mon, Birthday_mon_ent, Birthday_year, Anniversary_day, Anniversary_day_ent, Anniversary_mon, Anniversary_mon_ent, Anniversary_year, group);
+      ContactData contact = new ContactData(First_name, null, Last_name, null, null, null, Address, Telephone_Home, Telephone_Mobile, Telephone_Work, null, Email, Email2, Email3, null,  null, null, null, null, null, null, null, null, null, null, null);
       contacts.add(contact);
     }
     return contacts;
