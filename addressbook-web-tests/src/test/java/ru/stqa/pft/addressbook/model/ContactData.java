@@ -1,7 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private final String id;
+  private int id;
   private final String first_name;
   private final String middle_name;
   private final String last_name;
@@ -30,7 +30,7 @@ public class ContactData {
   private String group;
 
   public ContactData(String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year, String group) {
-    id = null;
+    id = Integer.MAX_VALUE;
     first_name = First_name;
     middle_name = Middle_name;
     last_name = Last_name;
@@ -59,7 +59,7 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(String ID, String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year, String group) {
+  public ContactData(int ID, String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year, String group) {
     id = ID;
     first_name = First_name;
     middle_name = Middle_name;
@@ -89,8 +89,12 @@ public class ContactData {
     this.group = group;
   }
 
-  public String getId() {
+  public int getId() {
     return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getFirst_name() {
@@ -198,13 +202,28 @@ public class ContactData {
   }
 
   @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", first_name='" + first_name + '\'' +
+            ", last_name='" + last_name + '\'' +
+            ", address='" + address + '\'' +
+            ", telephone_Home='" + telephone_Home + '\'' +
+            ", telephone_Mobile='" + telephone_Mobile + '\'' +
+            ", telephone_Work='" + telephone_Work + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            '}';
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
     ContactData that = (ContactData) o;
 
-    if (id != null ? !id.equals(that.id) : that.id != null) return false;
     if (first_name != null ? !first_name.equals(that.first_name) : that.first_name != null) return false;
     if (last_name != null ? !last_name.equals(that.last_name) : that.last_name != null) return false;
     if (address != null ? !address.equals(that.address) : that.address != null) return false;
@@ -221,8 +240,7 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
-    result = 31 * result + (first_name != null ? first_name.hashCode() : 0);
+    int result = first_name != null ? first_name.hashCode() : 0;
     result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
     result = 31 * result + (address != null ? address.hashCode() : 0);
     result = 31 * result + (telephone_Home != null ? telephone_Home.hashCode() : 0);
@@ -233,21 +251,4 @@ public class ContactData {
     result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     return result;
   }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", first_name='" + first_name + '\'' +
-            ", last_name='" + last_name + '\'' +
-            ", address='" + address + '\'' +
-            ", telephone_Home='" + telephone_Home + '\'' +
-            ", telephone_Mobile='" + telephone_Mobile + '\'' +
-            ", telephone_Work='" + telephone_Work + '\'' +
-            ", email='" + email + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
-            '}';
-  }
-
 }
