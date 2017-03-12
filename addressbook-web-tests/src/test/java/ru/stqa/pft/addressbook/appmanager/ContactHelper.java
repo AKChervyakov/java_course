@@ -86,11 +86,25 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.linkText("home")).click();
   }
 
+  public void goToHome() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
+
   public void createContact(ContactData contact, boolean creation) {
     initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();
     returnToHomePage();
+  }
+
+  public void modifyContact(int index, ContactData contact) {
+    selectModifiedContact(index);
+    fillContactForm(contact, false);
+    submitContactModification();
+    goToHome();
   }
 
   public boolean isThereAContact() {
