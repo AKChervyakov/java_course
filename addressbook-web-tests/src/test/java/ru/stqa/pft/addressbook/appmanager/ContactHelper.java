@@ -8,9 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Sanchez on 08.02.2017.
@@ -99,6 +97,7 @@ public class ContactHelper extends HelperBase {
     initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();
+    contactCache = null;
     returnToHomePage();
   }
 
@@ -106,12 +105,14 @@ public class ContactHelper extends HelperBase {
     selectModifiedContactById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
+    contactCache = null;
     home();
   }
 
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deleteContact();
+    contactCache = null;
     home();
   }
 
@@ -123,17 +124,23 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
+  private Contacts contactCache = null;
+
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
+
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       String First_name = element.findElement(By.xpath(".//td[3]")).getText();
       String Last_name = element.findElement(By.xpath(".//td[2]")).getText();
       String Address = element.findElement(By.xpath(".//td[4]")).getText();
       int ID = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(ID).withFirst_name(First_name).withLast_name(Last_name).withAddress(Address));
+      contactCache.add(new ContactData().withId(ID).withFirst_name(First_name).withLast_name(Last_name).withAddress(Address));
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
 
 }
