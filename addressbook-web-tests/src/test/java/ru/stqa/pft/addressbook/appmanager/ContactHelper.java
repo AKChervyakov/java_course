@@ -7,8 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Sanchez on 08.02.2017.
@@ -65,8 +66,8 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void deleteContact() {
@@ -74,8 +75,8 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void selectModifiedContact(int index) {
-    wd.findElements(By.xpath("//tr[@name='entry']")).get(index).findElement(By.xpath(".//a[contains(@href,'edit')]")).click();
+  public void selectModifiedContactById(int i) {
+    click(By.xpath("//input[@value='" + i +"']/../..//img[@alt='Edit']"));
   }
 
   public void submitContactModification() {
@@ -100,15 +101,15 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
-  public void modify(int index, ContactData contact) {
-    selectModifiedContact(index);
+  public void modify(ContactData contact) {
+    selectModifiedContactById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     home();
   }
 
-  public void delete(int index) {
-    selectContact(index);
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
     deleteContact();
     home();
   }
@@ -121,8 +122,8 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       String First_name = element.findElement(By.xpath(".//td[3]")).getText();
@@ -133,4 +134,5 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+
 }
