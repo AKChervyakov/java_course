@@ -1,100 +1,171 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String first_name;
-  private final String middle_name;
-  private final String last_name;
-  private final String nickname;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String telephone_Home;
-  private final String telephone_Mobile;
-  private final String telephone_Work;
-  private final String fax;
-  private final String email;
-  private final String email2;
-  private final String email3;
-  private final String homepage;
-  private final String birthday_day;
-  private final String birthday_day_ent;
-  private final String birthday_mon;
-  private final String birthday_mon_ent;
-  private final String birthday_year;
-  private final String anniversary_day;
-  private final String anniversary_day_ent;
-  private final String anniversary_mon;
-  private final String anniversary_mon_ent;
-  private final String anniversary_year;
+  private int id = Integer.MAX_VALUE;;
+  private String first_name;
+  private String middle_name;
+  private String last_name;
+  private String nickname;
+  private String title;
+  private String company;
+  private String address;
+  private String telephone_Home;
+  private String telephone_Mobile;
+  private String telephone_Work;
+  private String fax;
+  private String email;
+  private String email2;
+  private String email3;
+  private String homepage;
+  private String birthday_day;
+  private String birthday_day_ent;
+  private String birthday_mon;
+  private String birthday_mon_ent;
+  private String birthday_year;
+  private String anniversary_day;
+  private String anniversary_day_ent;
+  private String anniversary_mon;
+  private String anniversary_mon_ent;
+  private String anniversary_year;
   private String group;
-
-  public ContactData(String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year, String group) {
-    id = Integer.MAX_VALUE;
-    first_name = First_name;
-    middle_name = Middle_name;
-    last_name = Last_name;
-    nickname = Nickname;
-    title = Title;
-    company = Company;
-    address = Address;
-    telephone_Home = Telephone_Home;
-    telephone_Mobile = Telephone_Mobile;
-    telephone_Work = Telephone_Work;
-    fax = Fax;
-    email = Email;
-    email2 = Email2;
-    email3 = Email3;
-    homepage = Homepage;
-    birthday_day = Birthday_day;
-    birthday_day_ent = Birthday_day_ent;
-    birthday_mon = Birthday_mon;
-    birthday_mon_ent = Birthday_mon_ent;
-    birthday_year = Birthday_year;
-    anniversary_day = Anniversary_day;
-    anniversary_day_ent = Anniversary_day_ent;
-    anniversary_mon = Anniversary_mon;
-    anniversary_mon_ent = Anniversary_mon_ent;
-    anniversary_year = Anniversary_year;
-    this.group = group;
-  }
-
-  public ContactData(int ID, String First_name, String Middle_name, String Last_name, String Nickname, String Title, String Company, String Address, String Telephone_Home, String Telephone_Mobile, String Telephone_Work, String Fax, String Email, String Email2, String Email3, String Homepage, String Birthday_day, String Birthday_day_ent, String Birthday_mon, String Birthday_mon_ent, String Birthday_year, String Anniversary_day, String Anniversary_day_ent, String Anniversary_mon, String Anniversary_mon_ent, String Anniversary_year, String group) {
-    id = ID;
-    first_name = First_name;
-    middle_name = Middle_name;
-    last_name = Last_name;
-    nickname = Nickname;
-    title = Title;
-    company = Company;
-    address = Address;
-    telephone_Home = Telephone_Home;
-    telephone_Mobile = Telephone_Mobile;
-    telephone_Work = Telephone_Work;
-    fax = Fax;
-    email = Email;
-    email2 = Email2;
-    email3 = Email3;
-    homepage = Homepage;
-    birthday_day = Birthday_day;
-    birthday_day_ent = Birthday_day_ent;
-    birthday_mon = Birthday_mon;
-    birthday_mon_ent = Birthday_mon_ent;
-    birthday_year = Birthday_year;
-    anniversary_day = Anniversary_day;
-    anniversary_day_ent = Anniversary_day_ent;
-    anniversary_mon = Anniversary_mon;
-    anniversary_mon_ent = Anniversary_mon_ent;
-    anniversary_year = Anniversary_year;
-    this.group = group;
-  }
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData withFirst_name(String first_name) {
+    this.first_name = first_name;
+    return this;
+  }
+
+  public ContactData withMiddle_name(String middle_name) {
+    this.middle_name = middle_name;
+    return this;
+  }
+
+  public ContactData withLast_name(String last_name) {
+    this.last_name = last_name;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withTelephone_Home(String telephone_Home) {
+    this.telephone_Home = telephone_Home;
+    return this;
+  }
+
+  public ContactData withTelephone_Mobile(String telephone_Mobile) {
+    this.telephone_Mobile = telephone_Mobile;
+    return this;
+  }
+
+  public ContactData withTelephone_Work(String telephone_Work) {
+    this.telephone_Work = telephone_Work;
+    return this;
+  }
+
+  public ContactData withFax(String fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public ContactData withHomepage(String homepage) {
+    this.homepage = homepage;
+    return this;
+  }
+
+  public ContactData withBirthday_day(String birthday_day) {
+    this.birthday_day = birthday_day;
+    return this;
+  }
+
+  public ContactData withBirthday_day_ent(String birthday_day_ent) {
+    this.birthday_day_ent = birthday_day_ent;
+    return this;
+  }
+
+  public ContactData withBirthday_mon(String birthday_mon) {
+    this.birthday_mon = birthday_mon;
+    return this;
+  }
+
+  public ContactData withBirthday_mon_ent(String birthday_mon_ent) {
+    this.birthday_mon_ent = birthday_mon_ent;
+    return this;
+  }
+
+  public ContactData withBirthday_year(String birthday_year) {
+    this.birthday_year = birthday_year;
+    return this;
+  }
+
+  public ContactData withAnniversary_day(String anniversary_day) {
+    this.anniversary_day = anniversary_day;
+    return this;
+  }
+
+  public ContactData withAnniversary_day_ent(String anniversary_day_ent) {
+    this.anniversary_day_ent = anniversary_day_ent;
+    return this;
+  }
+
+  public ContactData withAnniversary_mon(String anniversary_mon) {
+    this.anniversary_mon = anniversary_mon;
+    return this;
+  }
+
+  public ContactData withAnniversary_mon_ent(String anniversary_mon_ent) {
+    this.anniversary_mon_ent = anniversary_mon_ent;
+    return this;
+  }
+
+  public ContactData withAnniversary_year(String anniversary_year) {
+    this.anniversary_year = anniversary_year;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   public String getFirst_name() {
