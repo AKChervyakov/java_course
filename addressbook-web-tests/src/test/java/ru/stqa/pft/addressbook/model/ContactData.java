@@ -28,6 +28,16 @@ public class ContactData {
   private String anniversary_mon_ent;
   private String anniversary_year;
   private String group;
+  private String allPhones;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
 
   public int getId() {
     return id;
