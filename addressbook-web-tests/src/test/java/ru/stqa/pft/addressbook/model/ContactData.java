@@ -29,6 +29,16 @@ public class ContactData {
   private String anniversary_year;
   private String group;
   private String allPhones;
+  private String allEmails;
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
 
   public String getAllPhones() {
     return allPhones;
