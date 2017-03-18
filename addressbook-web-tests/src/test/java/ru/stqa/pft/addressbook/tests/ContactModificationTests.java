@@ -22,7 +22,7 @@ public class ContactModificationTests extends TestBase {
       app.contact().createContact(new ContactData()
                       .withFirst_name("Петров").withMiddle_name("Петрович").withLast_name("Петр").withNickname("Petrov")
                       .withTitle("title1").withCompany("Company1").withAddress("г. Саратов, ул. Гагарина 32, кв. 59")
-                      .withTelephone_Home("4934433").withTelephone_Mobile("+7834390749").withTelephone_Work("4931919").withFax("-")
+                      .withTelephone_Home("493-44-33").withTelephone_Mobile("+7(834)390-78-49").withTelephone_Work("4931919").withFax("-")
                       .withEmail("petrov@mail.ru").withEmail2("PPPetrov@gmail.com").withEmail3("Petrov38@yande.ru")
                       .withHomepage("-").withBirthday_day("//div[@id='content']/form/select[1]//option[19]")
                       .withBirthday_day_ent("//div[@id='content']/form/select[1]//option[19]")
