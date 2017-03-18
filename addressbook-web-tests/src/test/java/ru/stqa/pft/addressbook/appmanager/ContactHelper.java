@@ -132,16 +132,17 @@ public class ContactHelper extends HelperBase {
     }
 
     contactCache = new Contacts();
-    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
-    for (WebElement element : elements) {
-      String First_name = element.findElement(By.xpath(".//td[3]")).getText();
-      String Last_name = element.findElement(By.xpath(".//td[2]")).getText();
-      String Address = element.findElement(By.xpath(".//td[4]")).getText();
-      String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
-      String[] phones = allPhones.split("\n");
-      int ID = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int ID = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String Last_name = cells.get(1).getText();
+      String First_name = cells.get(2).getText();
+      String Address = cells.get(3).getText();
+//      String Email = cells.get(4).getText();
+      String allPhones = cells.get(5).getText();
       contactCache.add(new ContactData().withId(ID).withFirst_name(First_name).withLast_name(Last_name).withAddress(Address)
-              .withTelephone_Home(phones[0]).withTelephone_Mobile(phones[1]).withTelephone_Work(phones[2]));
+              .withAllPhones(allPhones));
     }
     return new Contacts(contactCache);
   }
