@@ -18,14 +18,14 @@ public class ContactCreationTests extends TestBase {
             .withTitle("title1").withCompany("Company1").withAddress("г. Саратов, ул. Гагарина 32, кв. 59")
             .withTelephone_Home("4934433").withTelephone_Mobile("+7834390749").withTelephone_Work("4931919").withFax("-")
             .withEmail("petrov@mail.ru").withEmail2("PPPetrov@gmail.com").withEmail3("Petrov38@yande.ru")
-            .withHomepage("-").withBirthday_day("//div[@id='content']/form/select[1]//option[19]")
-            .withBirthday_day_ent("//div[@id='content']/form/select[1]//option[19]")
-            .withBirthday_mon("//div[@id='content']/form/select[2]//option[9]")
-            .withBirthday_mon_ent("//div[@id='content']/form/select[2]//option[9]").withBirthday_year("1988")
-            .withAnniversary_day("//div[@id='content']/form/select[3]//option[12]")
-            .withAnniversary_day_ent("//div[@id='content']/form/select[3]//option[12]")
-            .withAnniversary_mon("//div[@id='content']/form/select[4]//option[12]")
-            .withAnniversary_mon_ent("//div[@id='content']/form/select[4]//option[12]").withAnniversary_year("2013").withGroup("test1");
+            .withHomepage("-").withBirthday_day(null)
+            .withBirthday_day_ent(null)
+            .withBirthday_mon(null)
+            .withBirthday_mon_ent(null).withBirthday_year(null)
+            .withAnniversary_day(null)
+            .withAnniversary_day_ent(null)
+            .withAnniversary_mon(null)
+            .withAnniversary_mon_ent(null).withAnniversary_year(null).withGroup(null);
     app.contact().createContact(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
