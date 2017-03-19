@@ -51,11 +51,24 @@ public class ContactCompareTests extends TestBase {
   }
 
   private String mergeDadaFromEditPage(ContactData contact) {
+
+    String H = "H:";
+    String M = "M:";
+    String W = "W:";
+    String F = "F:";
+    String Homepage = "Homepage:";
+
+    if(contact.getTelephone_Home().equals(""))  H = "";
+    if(contact.getTelephone_Mobile().equals(""))  M = "";
+    if(contact.getTelephone_Work().equals(""))  W = "";
+    if(contact.getFax().equals(""))  F = "";
+    if(contact.getHomepage().equals(""))  Homepage = "";
+
     return Arrays.asList(contact.getFirst_name(),contact.getMiddle_name(),contact.getLast_name(),contact.getNickname()
             ,contact.getTitle(),contact.getCompany(),contact.getAddress(),
-            ("H:" + contact.getTelephone_Home()), ("M:" + contact.getTelephone_Mobile()),("W:" +  contact.getTelephone_Work())
-            ,("F:" +  contact.getFax()),
-            contact.getEmail(),contact.getEmail2(),contact.getEmail3(),("Homepage:" +  contact.getHomepage()))
+            (H + contact.getTelephone_Home()), (M + contact.getTelephone_Mobile()),(W +  contact.getTelephone_Work())
+            ,(F +  contact.getFax()),
+            contact.getEmail(),contact.getEmail2(),contact.getEmail3(),(Homepage +  contact.getHomepage()))
             .stream().filter((s)-> ! s.equals(""))
             .map(ContactCompareTests::cleaned2)
             .collect(Collectors.joining(""));
