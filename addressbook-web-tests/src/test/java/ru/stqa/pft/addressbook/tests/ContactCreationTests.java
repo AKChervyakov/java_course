@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,9 +19,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
 
-/** Провайдер для csv
+//Провайдер для csv
   @DataProvider
-  public Iterator<Object[]> validContacts() throws IOException {
+  public Iterator<Object[]> validContactsFromCsv() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
 //    File photo = new File("src/test/resources/MyPhoto.jpg");
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
@@ -34,11 +36,10 @@ public class ContactCreationTests extends TestBase {
     }
     return list.iterator();
   }
- */
 
 //Провайдер для xml
   @DataProvider
-  public Iterator<Object[]> validContacts() throws IOException {
+  public Iterator<Object[]> validContactsFromXml() throws IOException {
 //    File photo = new File("src/test/resources/MyPhoto.jpg");
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
     String xml = "";
@@ -53,7 +54,23 @@ public class ContactCreationTests extends TestBase {
     return groups.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
   }
 
-  @Test(dataProvider = "validContacts")
+  //Провайдер для json
+  @DataProvider
+  public Iterator<Object[]> validContactsFromJson() throws IOException {
+//    File photo = new File("src/test/resources/MyPhoto.jpg");
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
+    String json = "";
+    String line = reader.readLine();
+    while (line != null) {
+      json += line;
+      line = reader.readLine();
+    }
+    Gson gson = new Gson();
+    List<ContactData> groups = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType()); //List<ContactData>.class
+    return groups.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
+  }
+
+  @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) {
     app.goTo().home();
     Contacts before = app.contact().all();
