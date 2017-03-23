@@ -79,6 +79,6 @@ public class ContactCompareTests extends TestBase {
   }
 
   private  static String cleaned2 (String phone){
-    return phone.replaceAll("\\s","").replaceAll("[()]","");
+    return phone.replaceAll("\\s","");
   }
 }
