@@ -20,8 +20,8 @@ public class ContactModificationTests extends TestBase {
     app.goTo().home();
     if (app.contact().all().size() == 0) {
       app.contact().createContact(new ContactData()
-                      .withFirst_name("Петров").withMiddle_name("Петрович").withLast_name("Петр").withNickname("Petrov")
-                      .withTitle("title1").withCompany("Company1").withAddress("г. Саратов, ул. Гагарина 32, кв. 59")
+                      .withFirst_name("Petrov").withMiddle_name("Petrovich").withLast_name("Petr").withNickname("Petrov")
+                      .withTitle("title1").withCompany("Company1").withAddress("c. Saratov, st. Gagarina 32, fl. 59")
                       .withTelephone_Home("493-44-33").withTelephone_Mobile("+7(834)390-78-49").withTelephone_Work("4931919").withFax("-")
                       .withEmail("petrov@mail.ru").withEmail2("PPPetrov@gmail.com").withEmail3("Petrov38@yande.ru")
                       .withHomepage("-").withBirthday_day("//div[@id='content']/form/select[1]//option[19]")
@@ -42,8 +42,8 @@ public class ContactModificationTests extends TestBase {
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId())
-            .withFirst_name("Петров").withMiddle_name("Петрович").withLast_name("Петр").withNickname("Petrov")
-            .withTitle("title1").withCompany("Company1").withAddress("г. Саратов, ул. Гагарина 32, кв. 59")
+            .withFirst_name("Petrov").withMiddle_name("Petrovich").withLast_name("Petr").withNickname("Petrov")
+            .withTitle("title1").withCompany("Company1").withAddress("c. Saratov, st. Gagarina 32, fl. 59")
             .withTelephone_Home("4955588").withTelephone_Mobile("+7834390749").withTelephone_Work("4931919").withFax("-")
             .withEmail("petrov@mail.ru").withEmail2("PPPetrov@gmail.com").withEmail3("Petrov38@yande.ru")
             .withHomepage("-").withBirthday_day("//div[@id='content']/form/select[1]//option[19]")
