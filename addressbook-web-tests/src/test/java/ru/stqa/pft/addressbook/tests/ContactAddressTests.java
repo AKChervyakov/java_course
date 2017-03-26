@@ -28,7 +28,7 @@ public class ContactAddressTests extends TestBase {
                       .withAnniversary_day("//div[@id='content']/form/select[3]//option[12]")
                       .withAnniversary_day_ent("//div[@id='content']/form/select[3]//option[12]")
                       .withAnniversary_mon("//div[@id='content']/form/select[4]//option[12]")
-                      .withAnniversary_mon_ent("//div[@id='content']/form/select[4]//option[12]").withAnniversary_year("2013").withGroup("test1")
+                      .withAnniversary_mon_ent("//div[@id='content']/form/select[4]//option[12]").withAnniversary_year("2013")
               , true);
     }
   }

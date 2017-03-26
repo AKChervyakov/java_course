@@ -30,7 +30,7 @@ public class ContactCompareTests extends TestBase {
                       .withAnniversary_day(null)
                       .withAnniversary_day_ent(null)
                       .withAnniversary_mon(null)
-                      .withAnniversary_mon_ent(null).withAnniversary_year(null).withGroup(null)
+                      .withAnniversary_mon_ent(null).withAnniversary_year(null)
               , true);
     }
   }

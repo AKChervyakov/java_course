@@ -8,6 +8,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table (name = "addressbook")
@@ -129,10 +131,6 @@ public class ContactData {
 
   @Expose
   @Transient
-  private String group;
-
-  @Expose
-  @Transient
   private String allPhones;
 
   @Expose
@@ -148,6 +146,11 @@ public class ContactData {
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public File getPhoto() {
     return new File(photo);
@@ -319,11 +322,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
-
   public String getFirst_name() {
     return first_name;
   }
@@ -424,8 +422,8 @@ public class ContactData {
     return anniversary_year;
   }
 
-  public String getGroup() {
-    return group;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   @Override
@@ -457,7 +455,6 @@ public class ContactData {
             ", anniversary_mon='" + anniversary_mon + '\'' +
             ", anniversary_mon_ent='" + anniversary_mon_ent + '\'' +
             ", anniversary_year='" + anniversary_year + '\'' +
-            ", group='" + group + '\'' +
             ", allPhones='" + allPhones + '\'' +
             ", allEmails='" + allEmails + '\'' +
             ", allInformation='" + allInformation + '\'' +
@@ -508,7 +505,6 @@ public class ContactData {
       return false;
     if (anniversary_year != null ? !anniversary_year.equals(that.anniversary_year) : that.anniversary_year != null)
       return false;
-    if (group != null ? !group.equals(that.group) : that.group != null) return false;
     if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
     if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
     if (allInformation != null ? !allInformation.equals(that.allInformation) : that.allInformation != null)
@@ -544,11 +540,15 @@ public class ContactData {
     result = 31 * result + (anniversary_mon != null ? anniversary_mon.hashCode() : 0);
     result = 31 * result + (anniversary_mon_ent != null ? anniversary_mon_ent.hashCode() : 0);
     result = 31 * result + (anniversary_year != null ? anniversary_year.hashCode() : 0);
-    result = 31 * result + (group != null ? group.hashCode() : 0);
     result = 31 * result + (allPhones != null ? allPhones.hashCode() : 0);
     result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
     result = 31 * result + (allInformation != null ? allInformation.hashCode() : 0);
     result = 31 * result + (photo != null ? photo.hashCode() : 0);
     return result;
+  }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
   }
 }
