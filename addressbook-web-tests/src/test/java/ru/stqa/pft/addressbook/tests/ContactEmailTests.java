@@ -17,8 +17,8 @@ public class ContactEmailTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().home();
-    if (app.contact().all().size() == 0) {
+    if (app.db ().contacts().size () ==0) {
+      app.goTo().home();
       app.contact().createContact(new ContactData()
                       .withFirst_name("Петров").withMiddle_name("Петрович").withLast_name("Петр").withNickname("Petrov")
                       .withTitle("title1").withCompany("Company1").withAddress("г. Саратов, ул. Гагарина 32, кв. 59")
