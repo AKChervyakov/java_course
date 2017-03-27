@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @XStreamAlias("group")
@@ -32,10 +33,34 @@ public class GroupData {
   @Type(type = "text")
   private String footer;
 
-  @ManyToMany(mappedBy = "groups")
+  //@ManyToMany(mappedBy = "groups")
+  //private Set<ContactData> contacts = new HashSet<ContactData>();
+
+  @Expose
+  @Column(name = "group_parent_id")
+  private int group_parent_id = 0;
+
+  @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
+  //@JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name =  "group_id"), inverseJoinColumns = @JoinColumn(name = "id"))
   private Set<ContactData> contacts = new HashSet<ContactData>();
 
-   public int getId() {
+  public static int getIndexById(List<GroupData> lGD, int id)
+  {
+    for(int i = 0; i < lGD.size(); i++)
+    {
+      if(lGD.get(i).getId() == id)
+      {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  public int getGroup_parent_id() {
+    return group_parent_id;
+  }
+
+  public int getId() {
     return id;
   }
 
