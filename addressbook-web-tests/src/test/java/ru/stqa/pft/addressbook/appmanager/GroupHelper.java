@@ -95,7 +95,22 @@ public class GroupHelper extends HelperBase {
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      groupCache.add(new GroupData().withId(id).withName(name));
+      groupCache.add(new GroupData(Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value")), element.getText(), null, null));
+    }
+    return new Groups(groupCache);
+  }
+
+  public Groups all_from_home() {
+    if(groupCache != null)
+      return new Groups(groupCache);
+
+    groupCache = new Groups();
+//    setTimeout(ApllicationManager.WAIT_ELEMENT_TIMEOUT);
+    List<WebElement> elements = wd.findElements(By.xpath(".//select[@name=\"to_group\"]"));
+//    setTimeout(ApllicationManager.STANDART_TIMEOUT);
+    for(WebElement e : elements)
+    {
+      groupCache.add(new GroupData(Integer.parseInt(e.findElement(By.tagName("option")).getAttribute("value")), e.findElement(By.tagName("option")).getText(), null, null));
     }
     return new Groups(groupCache);
   }

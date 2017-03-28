@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -76,6 +77,10 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
+  public void selectContact(ContactData contact) {
+    wd.findElement(By.xpath("//input[@value="+contact.getId()+"]")).click();
+  }
+
   public void deleteContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
@@ -125,6 +130,35 @@ public class ContactHelper extends HelperBase {
     deleteContact();
     contactCache = null;
     home();
+  }
+
+  public void selectGroupToAdd(GroupData group) {
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+  }
+
+  private void clickAddToGroup() {
+    wd.findElement(By.name("add")).click();
+  }
+
+  public void to_group(ContactData contact, GroupData group) {
+    selectGroupToAdd(group);
+    selectContact(contact);
+    clickAddToGroup();
+  }
+
+  public void selectGroupToContacts(GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+  }
+
+  private void clickRemoveFromGroup() {
+    wd.findElement(By.name("remove")).click();
+  }
+
+  public void without_group(ContactData contact, GroupData group)
+  {
+    selectGroupToContacts(group);
+    selectContact(contact);
+    clickRemoveFromGroup();
   }
 
   public boolean isThereAContact() {

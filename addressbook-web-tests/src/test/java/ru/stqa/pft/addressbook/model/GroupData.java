@@ -44,8 +44,7 @@ public class GroupData {
   //@JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name =  "group_id"), inverseJoinColumns = @JoinColumn(name = "id"))
   private Set<ContactData> contacts = new HashSet<ContactData>();
 
-  public static int getIndexById(List<GroupData> lGD, int id)
-  {
+  public static int getIndexById(List<GroupData> lGD, int id) {
     for(int i = 0; i < lGD.size(); i++)
     {
       if(lGD.get(i).getId() == id)
@@ -54,6 +53,25 @@ public class GroupData {
       }
     }
     return -1;
+  }
+
+  public GroupData() {
+
+  }
+
+/*
+  public GroupData(String name, String header, String footer) {
+    this.name = name;
+    this.header = header;
+    this.footer = footer;
+    this.id = Integer.MAX_VALUE;
+  }
+*/
+  public GroupData(int id, String name, String header, String footer) {
+    this.name = name;
+    this.header = header;
+    this.footer = footer;
+    this.id = id;
   }
 
   public int getGroup_parent_id() {

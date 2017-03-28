@@ -28,18 +28,15 @@ public class DeleteContactFromGroupTests extends TestBase {
     app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
     Contacts contacts = app.db().contacts();
 
-    if (contacts.size() == 0)
-    {
+    if (contacts.size() == 0) {
       app.contact().createContact(new ContactData().withFirst_name("Ivanov").withMiddle_name("Ivanovich").withLast_name("Ivan"), true);
       app.goTo().home();
     }
     contacts = app.db().contacts();
 
-    for(ContactData c: contacts)
-    {
+    for(ContactData c: contacts) {
       Groups groups_from_contact =  app.db().groups_in_contact(c);
-      if (groups_from_contact.size() != app.db().groups().size())
-      {
+      if (groups_from_contact.size() != app.db().groups().size()) {
         // проверяем в какой не состоит
         Groups contact_not_in_groups = app.db().contact_not_in_groups(c);
         if (contact_not_in_groups.size() > 0 )
@@ -54,6 +51,7 @@ public class DeleteContactFromGroupTests extends TestBase {
     app.goTo().home();
     ContactData contact = app.contact().all().iterator().next();
     GroupData group = app.group().all_from_home().iterator().next();
+
     app.contact().without_group(contact, group);
 
     assertThat(app.db().groups_in_contact(contact).stream().filter((g) -> g.getId() == group.getId()).count(),
