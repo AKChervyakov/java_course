@@ -144,6 +144,7 @@ public class ContactHelper extends HelperBase {
     selectGroupToAdd(group);
     selectContact(contact);
     clickAddToGroup();
+    home();
   }
 
   public void selectGroupToContacts(GroupData group) {
@@ -159,6 +160,7 @@ public class ContactHelper extends HelperBase {
     selectGroupToContacts(group);
     selectContact(contact);
     clickRemoveFromGroup();
+    home();
   }
 
   public boolean isThereAContact() {

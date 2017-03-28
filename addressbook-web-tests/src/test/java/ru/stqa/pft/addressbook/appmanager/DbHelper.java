@@ -57,8 +57,7 @@ public class DbHelper {
     return new Groups(contacts().stream().filter((c) -> c.getId() == contact.getId()).iterator().next().getGroups());
   }
 
-  public Groups contact_not_in_groups(ContactData contact)
-  {
+  public Groups contact_not_in_groups(ContactData contact) {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List result = session.createQuery( "from GroupData where deprecated = null " ).list();
